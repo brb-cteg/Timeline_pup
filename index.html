@@ -121,21 +121,22 @@
           <div class="container mt-3">
 
         <form>
-            <div class="card-header" style="padding-bottom: 0%;color: #fff;background-color: #007bff;border-color: #007bff;font-weight: 400">
-                <label class="card-title">บันทึกชีวิตประจำวัน</label>
-            </div>
             <div align="center" style="padding-top: 3%;">
       <img id="pictureUrl" style="width:80px; border-radius:60px;">
       <p hidden id="userId"></p>
       <p hidden id="userId2"></p>
       <p id="displayName" style="font-size: 15px;" ></p>
     </div>
-           <div align="center" id="map_canvas"></div>
+            <div class="card-header" style="padding-bottom: 0%;color: #fff;background-color: #007bff;border-color: #007bff;font-weight: 400">
+                <label class="card-title">บันทึกชีวิตประจำวัน</label>
+            </div>
+          
+           <div style="display: none;" align="center" id="map_canvas"></div>
       
        <div id="showDD" >
-       <input type="hidden" name="lat_value" id="lat_value" value=""><br>
-       <input type="hidden" name="lon_value" id="lon_value" value=""><br>
-       <input type="hidden" name="userId2" id="userId2" value="">
+       <input style="display: none;" name="lat_value" id="lat_value" value=""><br>
+       <input style="display: none;" name="lon_value" id="lon_value" value=""><br>
+       <input style="display: none;" name="userId2" id="userId2" value="">
         
             <label for="exampleInputEmail1" style="padding-top: 2%;">วันที่ทำกิจกรรม</label>
             <input type="datetime-local" class="form-control" data-date-language="th" id="dateTimes" name="dateTimes">
