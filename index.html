@@ -311,7 +311,7 @@
                         console.log(sum); 
                       ($("#totalScore").val(sum))*1;
                       getLocation();
-                      const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),pointstime:$("#pointstime").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val(),endDate:(localStorage.getItem("minuteD"))*1 + ($("#pointstime").val()*1)}
+                      const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),pointstime:$("#pointstime").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val(),endDate:$("#totalScore").val())}
                       console.log(data); 
                     //  $("#lat_value").val(my_Point.lat());  // เอาค่า latitude ตัว marker แสดงใน textbox id=lat_value
                     //  $("#lon_value").val(my_Point.lng());
