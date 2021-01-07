@@ -266,15 +266,10 @@
         $(document).ready(function() {
           datetimeset()
           function datetimeset(){
-             var d = new Date,
-              dformat = [ (d.getMonth()+1).padLeft(),
-                          d.getDate().padLeft(),
-                          d.getFullYear()].join('/')+
-                          ' ' +
-                        [ d.getHours().padLeft(),
-                          d.getMinutes().padLeft(),
-                          d.getSeconds().padLeft()].join(':');
-           $('#dateTimes').html(dformat);
+             var d = new Date
+                
+              document.getElementById("dateTimes").innerHTML = d.getFullYear();
+              
           }
           var lat;
           var long;
