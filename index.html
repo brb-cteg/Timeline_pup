@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>SMARTCHECKIN | EIT</title>
+    <link rel="stylesheet" href="css/style.css" media="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body>
+    <img id="pictureUrl">
+    <center>
+        <p id="displayName"><b></b> </p>
+        <p id="userId"><b></b> </p>
+        <div style="display: none;" id="location"></div>
+
+        </div>
+    </center>
+    <!-- <div id="googleMap" style="width:500px;height:380px;"></div> -->
+    <!-- Map -->
+    <div align="center" id="map_canvas"></div>
+
+    <div align="center" id="showDD">
+        <input type="hidden" name="lat_value" id="lat_value" value=""><br>
+        <input type="hidden" name="lon_value" id="lon_value" value=""><br>
+        <input type="hidden" name="userId" id="userId" value="">
+        <!-- <button type="button" class="btn btn-primary" id="btnGetLocation" name="btnGetLocation">Send My Location</button> -->
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        var map; // กำหนดตัวแปร map ไว้ด้านนอกฟังก์ชัน เพื่อให้สามารถเรียกใช้งาน จากส่วนอื่นได้
+        var GGM; // กำหนดตัวแปร GGM ไว้เก็บ google.maps Object จะได้เรียกใช้งานได้ง่ายขึ้น
+
+        function initialize() { // ฟังก์ชันแสดงแผนที่
+            GGM = new Object(google.maps); // เก็บตัวแปร google.maps Object ไว้ในตัวแปร GGM
+            // กำหนดจุดเริ่มต้นของแผนที่
+            var my_Latlng = new GGM.LatLng(13.761728449950002, 100.6527900695800);
+            var my_mapTypeId = GGM.MapTypeId.ROADMAP; // กำหนดรูปแบบแผนที่ที่แสดง
+            // กำหนด DOM object ที่จะเอาแผนที่ไปแสดง ที่นี้คือ div id=map_canvas
+            var my_DivObj = $("#map_canvas")[0];
+            // กำหนด Option ของแผนที่
+            var myOptions = {
+                zoom: 13, // กำหนดขนาดการ zoom
+                center: my_Latlng, // กำหนดจุดกึ่งกลาง
+                mapTypeId: my_mapTypeId // กำหนดรูปแบบแผนที่
+            };
+            map = new GGM.Map(my_DivObj, myOptions); // สร้างแผนที่และเก็บตัวแปรไว้ในชื่อ map
+
+
+
+            // เรียกใช้คุณสมบัติ ระบุตำแหน่ง ของ html 5 ถ้ามี
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var pos = new GGM.LatLng(position.coords.latitude, position.coords.longitude);
+                    var infowindow = new GGM.InfoWindow({
+                        map: map,
+                        position: pos,
+                        content: 'คุณอยู่ที่นี่.'
+                    });
+
+                    var my_Point = infowindow.getPosition(); // หาตำแหน่งของตัว marker เมื่อกดลากแล้วปล่อย
+                    map.panTo(my_Point); // ให้แผนที่แสดงไปที่ตัว marker       
+                    $("#lat_value").val(my_Point.lat()); // เอาค่า latitude ตัว marker แสดงใน textbox id=lat_value
+                    $("#lon_value").val(my_Point.lng()); // เอาค่า longitude ตัว marker แสดงใน textbox id=lon_value 
+                    $("#zoom_value").val(map.getZoom()); // เอาขนาด zoom ของแผนที่แสดงใน textbox id=zoom_value              
+                    map.setCenter(pos);
+                }, function() {
+                    // คำสั่งทำงาน ถ้า ระบบระบุตำแหน่ง geolocation ผิดพลาด หรือไม่ทำงาน
+                });
+            } else {
+                // คำสั่งทำงาน ถ้า บราวเซอร์ ไม่สนับสนุน ระบุตำแหน่ง
+            }
+
+            // กำหนด event ให้กับตัวแผนที่ เมื่อมีการเปลี่ยนแปลงการ zoom
+            GGM.event.addListener(map, 'zoom_changed', function() {
+                $("#zoom_value").val(map.getZoom()); // เอาขนาด zoom ของแผนที่แสดงใน textbox id=zoom_value  
+            });
+
+        }
+        $(function() {
+
+            $("<script/>", {
+                "type": "text/javascript",
+                src: "//maps.google.com/maps/api/js?v=3.2&sensor=false&language=th&callback=initialize"
+            }).appendTo("body");
+        });
+    </script>
+
+    <!-- End Map -->
+    <div class="container mt-3">
+
+        <form>
+            <div class="card-header" style="padding-bottom: 0%;color: #fff;background-color: #007bff;border-color: #007bff;font-weight: 400">
+                <label class="card-title">บันทึกชีวิตประจำวัน</label>
+            </div>
+            <label for="exampleInputEmail1" style="padding-top: 2%;">วันที่ทำกิจกรรม</label>
+            <input type="datetime-local" class="form-control" data-date-language="th" id="dateTimes" name="dateTimes">
+            <label style="padding-top: 2%;">กิจกรรม</label>
+            <select name="cars" class="custom-select mb-3" id="activity" name="activity">
+                <option selected>เลือกกิจกรรม</option>
+                <option >ซื้ออาหาร</option>
+                <option >หาหมอ</option>
+                <option >นั่งร้าน</option>
+              </select>
+            <label style="padding-top: 2%;">เวลาที่ทำกิจกรรม(Hr)</label>
+            <input type="number" class="form-control" id="pointstime" name="pointstime" step="0.5" style="width: 20%;">
+            <label style="padding-top: 2%;">พบปะใคร</label>
+            <textarea type="" class="form-control" id="meeting" name="meeting" rows="3"></textarea>
+            <label style="padding-top: 2%;">พาหนะ</label>
+            <select name="cars" class="custom-select mb-3" id="vehicle" name="vehicle">
+                <option selected>เลือกพาหนะ</option>
+                <option >รถสาธารณะ</option>
+                <option >MRT</option>
+                <option >BTS</option>
+                <option >วินมอไซด์</option>
+                <option >แท็กซี่</option>
+                <option >รถยนต์ส่วนตัว</option>
+                <option >มอไซด์ส่วนตัว</option>
+              </select>
+            <button type="submit" class="btn btn-primary">บันทึก</button>
+        </form>
+    </div>
+
+    <p id="os" style="display: none;"><b>OS:</b> </p>
+    <p id="language" style="display: none;"><b>Language:</b> </p>
+    <p id="version" style="display: none;"><b>Version:</b> </p>
+    <p id="isInClient" style="display: none;"><b>isInClient:</b> </p>
+    <p id="accessToken" style="display: none;"><b>AccessToken:</b> </p>
+    <img id="pictureUrl" style="display: none;">
+    <p id="userId" style="display: none;"><b>userId:</b> </p>
+    <p id="displayName" style="display: none;"><b>displayName:</b> </p>
+    <p id="statusMessage" style="display: none;"><b>statusMessage:</b> </p>
+    <p id="decodedIDToken" style="display: none;"><b>email:</b> </p>
+    <p id="type" style="display: none;"><b>type:</b> </p>
+    <p id="viewType" style="display: none;"><b>viewType:</b> </p>
+    <p id="utouId" style="display: none;"><b>utouId:</b> </p>
+    <p id="roomId" style="display: none;"><b>roomId:</b> </p>
+    <p id="groupId" style="display: none;"><b>groupId:</b> </p>
+    <p id="friendship" style="display: none;"><b>isFriendship:</b> </p>
+    <p id="scanCode" style="display: none;"><b>Code:</b> </p>
+    <p id="isLoggedIn" style="display: none;"><b>isLoggedIn:</b> </p>
+    <p id="universalLink1" style="display: none;"><b>Universal Link:</b> </p>
+    <p id="universalLink2" style="display: none;"><b>Universal Link with Query params:</b> </p>
+    <p style="display: none;"><a href="liff/path/?param=9">Link to Path</a></p>
+
+    <button id="btnMsg" onclick="sendMsg()" style="display: none;">Send Message</button>
+    <button id="btnShare" onclick="shareMsg()" style="display: none;">Share Target Picker</button>
+    <button onclick="openWindow()" style="display: none;">Open Window</button>
+    <button id="btnScanCode" onclick="scanCode()" style="display: none;">Scan Code</button>
+    <button id="btnLogOut" onclick="logOut()" style="display: none;">Log Out</button>
+    <button id="btnClose" onclick="closed()" style="display: none;">Close</button>
+
+    <script src="js/vconsole.min.js"></script>
+    <!-- <script>
+    var vConsole = new VConsole()
+    console.log("Hello World!")
+  </script> -->
+
+    <script src="https://static.line-scdn.net/liff/edge/versions/2.6.0/sdk.js"></script>
+    <script>
+        var lat;
+        var long;
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                $('#location').html("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            var location = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+            lat = position.coords.latitude;
+            long = position.coords.longitude;
+            $('#location').html(location);
+
+        }
+
+        function createUniversalLink() {}
+
+        async function shareMsg() {}
+
+        function logOut() {}
+
+        function closed() {}
+
+        async function scanCode() {}
+
+        function openWindow() {}
+
+        async function getFriendship() {}
+        $("form.formX").on("submit", function(event) {
+            event.preventDefault();
+            console.log($(this).serialize());
+        });
+
+        function summit() {
+            validateFeild();
+            //  calcscore();
+            var formtest = $(".formX").serializeArray();
+            // var formtestx = $(".formX").serializeObject();
+            console.log(formtest);
+            console.log($("#dateTimes").val())
+            console.log($("#activity").val())
+            console.log($("#pointstime").val())
+            console.log($("#meeting").val())
+            console.log($("#vehicle").val())
+            console.log($("#userId").val())
+            console.log($("#lat_value").val())
+            console.log($("#lon_value").val())
+
+            if (validated == true) {
+
+                var settings = {
+                    "url": "https://projectx.boonrawd.co.th/reserve/api/inputreserve/",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "data": JSON.stringify({
+                        "inputReserveID": 0,
+                        "dateTimes": $("#dateTimes").val(),
+                        "activity": $("#activity").val(),
+                        "pointstime": $("#pointstime").val(),
+                        "meeting": $("#meeting").val(),
+                        "vehicle": $("#vehicle").val(),
+                        "Latitude": $("#lat_value").val(),
+                        "Longitude": $("#lon_value").val(),
+                        "userId": $("#userId").val()
+                    }),
+                };
+
+                $.ajax(settings).done(function(response) {
+                    console.log(response);
+
+
+                    if (response.result == "success") {
+
+
+                        // swal("Good job!", "บันทึกสำเร็จ!", "success");
+                        swal({
+                            title: "Good job!",
+                            // text: " ขอเชิญท่านประเมินความพึงพอใจ การบริการในภาพรวม ที่ดำเนินการโดยกลุ่มวิศวกรรมกลาง และหน่วยงานสังกัดสายวิศวกรรมและสารสนเทศ ",
+                            text: "บันทึกสำเร็จ!",
+                            icon: "success",
+
+                            buttons: true,
+                            buttons: "OK"
+                        }).then((value) => {
+                            window.location.href = "https://reservedocument-f6fd7.web.app/home.html";
+                            // localStorage.clear()
+                            window.localStorage.removeItem('inputreserveName');
+                            //   $("#inputreserveName").val(value.inputreserveName)
+                            // $("#division").val(value.division)
+                            // $("#approveName").val(value.approveName)
+                            // $("#approveName").val(value.approveName)
+                            // $("#details").val(value.details)
+                            // $("#dateTimes").val(updateLast)
+                            // $("#namecreate").val(value.namecreate)
+                        });
+                    } else {
+
+                        swal("ไม่สำเร้จ!", "กรุณาตรวจสอบความถูกต้องของข้อมูล!", "warning");
+
+                    }
+
+                });
+
+                validated = false;
+
+            } else {
+                // swal("บันทึกข้อมูลไม่สำเร็จ!", "", "warning");       
+                // swal('กรุณากรอกรายละเอียดของหนังสือออก');
+                if ($("#inputreserveName").val() == "") {
+                    // alert('กรุณาประเมินคะแนน');
+                    swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณากรอกรายละเอียดของหนังสือออก", "warning");
+                    // $("#inputreserveName").removeClass("alert-primary").addClass("alert-danger");
+
+                } else {
+                    // $("#inputreserveName").removeClass("alert-danger").addClass("alert-primary");
+
+                }
+                if ($("#division").val() == "เลือกสังกัด/หน่วยงาน") {
+                    // alert('กรุณาประเมินคะแนน');
+                    swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกสังกัด/หน่วยงาน", "warning");
+                    // $("#inputreserveName").removeClass("alert-primary").addClass("alert-danger");
+
+
+                } else {
+                    // $("#inputreserveName").removeClass("alert-danger").addClass("alert-primary");
+
+                }
+                if ($("#approveName").val() == "เลือกผู้ลงนามอนุมัติเอกสาร") {
+                    // alert('กรุณาประเมินคะแนน');
+                    swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกผู้ลงนามอนุมัติเอกสาร", "warning");
+                    // $("#inputreserveName").removeClass("alert-primary").addClass("alert-danger");
+
+
+                } else {
+                    // $("#inputreserveName").removeClass("alert-danger").addClass("alert-primary");
+
+                }
+            }
+
+
+        };
+
+        $(".btnX").click(function() {
+            summit()
+        });
+        async function sendMsg() {
+            // alert("messages")
+            //       if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
+            // // Send messages here.
+            //         }
+            // swal("สำเร้จ!", "success", "success");
+
+
+
+            // if (liff.getContext().type !== "none") {
+            //     await liff.sendMessages([{
+            //         "type": "sticker",
+            //         "stickerId": 1,
+            //         "packageId": 1
+            //     }, ])
+
+            //     swal("สำเร้จ!", "success", "success");
+            // }
+        }
+
+
+
+        function getContext() {
+            document.getElementById("type").append(liff.getContext().type)
+            document.getElementById("viewType").append(liff.getContext().viewType)
+            document.getElementById("utouId").append(liff.getContext().utouId)
+            document.getElementById("roomId").append(liff.getContext().roomId)
+            document.getElementById("groupId").append(liff.getContext().groupId)
+        }
+
+        async function getUserProfile() {
+            const profile = await liff.getProfile()
+            document.getElementById("pictureUrl").src = profile.pictureUrl
+            document.getElementById("userId").append(profile.userId)
+            document.getElementById("statusMessage").append(profile.statusMessage)
+            document.getElementById("displayName").append(profile.displayName)
+
+        }
+
+        function getEnvironment() {
+            document.getElementById("os").append(liff.getOS())
+            document.getElementById("language").append(liff.getLanguage())
+            document.getElementById("version").append(liff.getVersion())
+            document.getElementById("accessToken").append(liff.getAccessToken()) // ความปลอดภัย
+            document.getElementById("isInClient").append(liff.isInClient()) //ซ่อน app line หรือ app browser
+            if (liff.isInClient()) {
+                document.getElementById("btnLogOut").style.display = "none"
+
+            } else {
+                document.getElementById("btnMsg").style.display = "none"
+                document.getElementById("btnScanCode").style.display = "none"
+                document.getElementById("btnClose").style.display = "none"
+            }
+        }
+
+        async function main() {
+            // alert("LINE Developers x Skooldio")
+            await liff.init({
+                liffId: "1655548685-52zM1yX7"
+            })
+            getEnvironment()
+            getUserProfile()
+            getContext()
+            getLocation()
+            showPosition()
+                // getFriendship()
+                // createUniversalLink()
+        }
+        main()
+    </script>
+</body>
+
+</html>
