@@ -168,6 +168,12 @@
                 <option value="7">มอไซด์ส่วนตัว</option>
               
               </select>
+         <div class="form-group " style="width:50%">
+                <label>ระยะเวลา(วัน):</label>
+                <input class=" score1 " type="text" id="dayId" name="dayId" value="" readonly/>
+
+                <input class=" score1 " type="text" id="totalScore" name="totalScore" value="" readonly/>
+            </div>
             <button type="button" class="btn btn-primary" id="btnGetLocation" name="btnGetLocation">บันทึก</button>
 
         </form>
@@ -264,7 +270,30 @@
         }
       
         $(document).ready(function() {
-        
+         window.addEventListener("load", function() {
+            var now = new Date();
+            var utcString = now.toISOString().substring(0, 19);
+            var year = now.getFullYear();
+            var month = now.getMonth() + 1;
+            var day = now.getDate();
+            var hour = now.getHours();
+            var minute = now.getMinutes();
+            var second = now.getSeconds();
+            var localDatetime = year + "-" +
+                (month < 10 ? "0" + month.toString() : month) + "-" +
+                (day < 10 ? "0" + day.toString() : day) + "T" +
+                (hour < 10 ? "0" + hour.toString() : hour) + ":" +
+                (minute < 10 ? "0" + minute.toString() : minute) +
+                utcString.substring(16, 19);
+           
+            var sumfi = (minute < 10 ? "0" + minute.toString() : minute)
+            var datetimeFieldx = document.getElementById("dayId");
+            datetimeFieldx.value = sumfi;
+
+            localStorage.setItem("minuteD", datetimeFieldx.value)
+                // var minuteD =  localStorage.getItem("minuteD")
+        });
+         
 
           var lat;
           var long;
@@ -273,7 +302,10 @@
          //$.post( "https://entech.boonrawd.co.th/callbackline2", data2, function( data2 ) {
             //          console.log(data2); 
             //          }, "json");
-          $("#btnGetLocation").on("click",function() {	
+          $("#btnGetLocation").on("click",function() {
+                       var datetimeField = document.getElementById("dateTimes");
+                        datetimeField.value = localDatetime;
+                      
                       getLocation();
                       const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),pointstime:$("#pointstime").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val()}
                       console.log(data); 
