@@ -252,26 +252,7 @@
       
       
       <script type="text/javascript">
-      
-        function getLocation() {
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-          } else { 
-            $('#location').html("Geolocation is not supported by this browser.");
-          }
-        }
-      
-        function showPosition(position) {
-          var location = "Latitude: " + position.coords.latitude +  "<br>Longitude: " + position.coords.longitude;
-              lat = position.coords.latitude;
-              long = position.coords.longitude;
-              $('#location').html(location);
-
-        }
-      
-        $(document).ready(function() {
-        
-        window.addEventListener("load", function() {
+      window.addEventListener("load", function() {
             var now = new Date();
             var utcString = now.toISOString().substring(0, 19);
             var year = now.getFullYear();
@@ -295,6 +276,25 @@
             localStorage.setItem("minuteD", datetimeFieldx.value)
                 // var minuteD =  localStorage.getItem("minuteD")
         });
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else { 
+            $('#location').html("Geolocation is not supported by this browser.");
+          }
+        }
+      
+        function showPosition(position) {
+          var location = "Latitude: " + position.coords.latitude +  "<br>Longitude: " + position.coords.longitude;
+              lat = position.coords.latitude;
+              long = position.coords.longitude;
+              $('#location').html(location);
+
+        }
+      
+        $(document).ready(function() {
+        
+        
          
 
           var lat;
