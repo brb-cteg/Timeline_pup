@@ -271,7 +271,30 @@
       
         $(document).ready(function() {
         
-        
+        window.addEventListener("load", function() {
+            var now = new Date();
+            var utcString = now.toISOString().substring(0, 19);
+            var year = now.getFullYear();
+            var month = now.getMonth() + 1;
+            var day = now.getDate();
+            var hour = now.getHours();
+            var minute = now.getMinutes();
+            var second = now.getSeconds();
+            var localDatetime = year + "-" +
+                (month < 10 ? "0" + month.toString() : month) + "-" +
+                (day < 10 ? "0" + day.toString() : day) + "T" +
+                (hour < 10 ? "0" + hour.toString() : hour) + ":" +
+                (minute < 10 ? "0" + minute.toString() : minute) +
+                utcString.substring(16, 19);
+            var datetimeField = document.getElementById("dateTimes");
+            datetimeField.value = localDatetime;
+            var sumfi = (minute < 10 ? "0" + minute.toString() : minute)
+            var datetimeFieldx = document.getElementById("dayId");
+            datetimeFieldx.value = sumfi;
+
+            localStorage.setItem("minuteD", datetimeFieldx.value)
+                // var minuteD =  localStorage.getItem("minuteD")
+        });
          
 
           var lat;
@@ -282,29 +305,7 @@
             //          console.log(data2); 
             //          }, "json");
           $("#btnGetLocation").on("click",function() {
-                           window.addEventListener("load", function() {
-                          var now = new Date();
-                          var utcString = now.toISOString().substring(0, 19);
-                          var year = now.getFullYear();
-                          var month = now.getMonth() + 1;
-                          var day = now.getDate();
-                          var hour = now.getHours();
-                          var minute = now.getMinutes();
-                          var second = now.getSeconds();
-                          var localDatetime = year + "-" +
-                              (month < 10 ? "0" + month.toString() : month) + "-" +
-                              (day < 10 ? "0" + day.toString() : day) + "T" +
-                              (hour < 10 ? "0" + hour.toString() : hour) + ":" +
-                              (minute < 10 ? "0" + minute.toString() : minute) +
-                              utcString.substring(16, 19);
-
-                          var sumfi = (minute < 10 ? "0" + minute.toString() : minute)
-                          var datetimeFieldx = document.getElementById("dayId");
-                          datetimeFieldx.value = sumfi;
-
-                          localStorage.setItem("minuteD", datetimeFieldx.value)
-                              // var minuteD =  localStorage.getItem("minuteD")
-                      });
+                       
                        var minuteD =  (localStorage.getItem("minuteD"))*1
                        var datetimeField = ($("#pointstime").val()*1);
                        var sum = (localStorage.getItem("minuteD"))*1 + ($("#pointstime").val()*1);
