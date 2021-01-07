@@ -142,12 +142,13 @@
             <input type="datetime-local" class="form-control" data-date-language="th" id="dateTimes" name="dateTimes">
             <label style="padding-top: 2%;">กิจกรรม</label>
             <select name="cars" class="custom-select mb-3" id="activity" name="activity">
-                <option selected>เลือกกิจกรรม</option>
-                <option >ซื้ออาหาร</option>
-                <option >หาหมอ</option>
-                <option >นั่งร้าน</option>
-               <option >อยู่บ้าน</option>
-                <option >อยู่Office</option>
+                <option selected value="0">เลือกกิจกรรม</option>
+                <option value="1">อยู่บ้าน</option>
+                <option value="2">อยู่Office</option>
+                <option value="3">ซื้ออาหาร</option>
+                <option value="4">หาหมอ</option>
+                <option value="5">นั่งร้าน</option>
+               
               </select>
             <label style="padding-top: 2%;">เวลาที่ทำกิจกรรม(นาที)</label>
 
@@ -156,14 +157,16 @@
             <textarea type="" class="form-control" id="meeting" name="meeting" rows="3"></textarea>
             <label style="padding-top: 2%;">พาหนะ</label>
             <select name="cars" class="custom-select mb-3" id="vehicle" name="vehicle">
-                <option selected>เลือกพาหนะ</option>
-                <option >รถสาธารณะ</option>
-                <option >MRT</option>
-                <option >BTS</option>
-                <option >วินมอไซด์</option>
-                <option >แท็กซี่</option>
-                <option >รถยนต์ส่วนตัว</option>
-                <option >มอไซด์ส่วนตัว</option>
+                <option selected value="0">เลือกพาหนะ</option>
+                <option value="8">-</option>
+                <option value="1">รถสาธารณะ</option>
+                <option value="2">MRT</option>
+                <option value="3">BTS</option>
+                <option value="4">วินมอไซด์</option>
+                <option value="5">แท็กซี่</option>
+                <option value="6">รถยนต์ส่วนตัว</option>
+                <option value="7">มอไซด์ส่วนตัว</option>
+              
               </select>
             <button type="button" class="btn btn-primary" id="btnGetLocation" name="btnGetLocation">บันทึก</button>
 
@@ -261,6 +264,17 @@
         }
       
         $(document).ready(function() {
+          function datetimeset(){
+             var d = new Date,
+              dformat = [ (d.getMonth()+1).padLeft(),
+                          d.getDate().padLeft(),
+                          d.getFullYear()].join('/')+
+                          ' ' +
+                        [ d.getHours().padLeft(),
+                          d.getMinutes().padLeft(),
+                          d.getSeconds().padLeft()].join(':');
+           $('#dateTimes').html(dformat);
+          }
           var lat;
           var long;
           //runApp()
