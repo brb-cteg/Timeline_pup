@@ -3,8 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
+    
+    <title>SMARTCHECKIN | EIT</title>
+    <link rel="stylesheet" href="css/style.css" media="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/7.13.1/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -117,7 +124,42 @@
        <input type="hidden" name="lat_value" id="lat_value" value=""><br>
        <input type="hidden" name="lon_value" id="lon_value" value=""><br>
        <input type="hidden" name="userId2" id="userId2" value="">
-       <button type="button" class="btn btn-primary" id="btnGetLocation" name="btnGetLocation">Send My Location</button>
+          <div class="container mt-3">
+
+        <form>
+            <div class="card-header" style="padding-bottom: 0%;color: #fff;background-color: #007bff;border-color: #007bff;font-weight: 400">
+                <label class="card-title">บันทึกชีวิตประจำวัน</label>
+            </div>
+            <label for="exampleInputEmail1" style="padding-top: 2%;">วันที่ทำกิจกรรม</label>
+            <input type="datetime-local" class="form-control" data-date-language="th" id="dateTimes" name="dateTimes">
+            <label style="padding-top: 2%;">กิจกรรม</label>
+            <select name="cars" class="custom-select mb-3" id="activity" name="activity">
+                <option selected>เลือกกิจกรรม</option>
+                <option >ซื้ออาหาร</option>
+                <option >หาหมอ</option>
+                <option >นั่งร้าน</option>
+              </select>
+            <label style="padding-top: 2%;">เวลาที่ทำกิจกรรม(นาที)</label>
+
+            <input type="number" class="form-control" id="pointstime" name="pointstime" step="0.5" style="width: 20%;">
+            <label style="padding-top: 2%;">รายละเอียด (ไปไหน กับใคร พบปะใคร)</label>
+            <textarea type="" class="form-control" id="meeting" name="meeting" rows="3"></textarea>
+            <label style="padding-top: 2%;">พาหนะ</label>
+            <select name="cars" class="custom-select mb-3" id="vehicle" name="vehicle">
+                <option selected>เลือกพาหนะ</option>
+                <option >รถสาธารณะ</option>
+                <option >MRT</option>
+                <option >BTS</option>
+                <option >วินมอไซด์</option>
+                <option >แท็กซี่</option>
+                <option >รถยนต์ส่วนตัว</option>
+                <option >มอไซด์ส่วนตัว</option>
+              </select>
+            <button type="submit" class="btn btn-primary">บันทึก</button>
+
+        </form>
+    </div>
+       <button type="button" class="btn btn-primary" id="btnGetLocation" name="btnGetLocation">บันทึก</button>
       </div> 
          
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>    
@@ -218,7 +260,7 @@
             //          }, "json");
           $("#btnGetLocation").on("click",function() {	
                       getLocation();
-                      const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val()}
+                      const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),pointstime:$("#pointstime").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val()}
                       console.log(data); 
                     //  $("#lat_value").val(my_Point.lat());  // เอาค่า latitude ตัว marker แสดงใน textbox id=lat_value
                     //  $("#lon_value").val(my_Point.lng());
@@ -226,7 +268,7 @@
                       console.log(data);
                       confirm(data)
                       }, "json");
-                      confirm("คุณได้ Check-IN เวลาเรียบร้อยแล้ว");
+                      confirm("คุณได้บันทึกชีวิตประจำวันเรียบร้อยแล้ว");
                       //runApp()
                      
                        liff.closeWindow();
