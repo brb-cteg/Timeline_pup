@@ -118,18 +118,25 @@
       
       
     
-      <div align="center" id="map_canvas"></div>
+<!--       <div align="center" id="map_canvas"></div>
       
        <div align="center" id="showDD" >
        <input type="hidden" name="lat_value" id="lat_value" value=""><br>
        <input type="hidden" name="lon_value" id="lon_value" value=""><br>
-       <input type="hidden" name="userId2" id="userId2" value="">
+       <input type="hidden" name="userId2" id="userId2" value=""> -->
           <div class="container mt-3">
 
         <form>
             <div class="card-header" style="padding-bottom: 0%;color: #fff;background-color: #007bff;border-color: #007bff;font-weight: 400">
                 <label class="card-title">บันทึกชีวิตประจำวัน</label>
             </div>
+           <div align="center" id="map_canvas"></div>
+      
+       <div align="center" id="showDD" >
+       <input type="hidden" name="lat_value" id="lat_value" value=""><br>
+       <input type="hidden" name="lon_value" id="lon_value" value=""><br>
+       <input type="hidden" name="userId2" id="userId2" value="">
+        
             <label for="exampleInputEmail1" style="padding-top: 2%;">วันที่ทำกิจกรรม</label>
             <input type="datetime-local" class="form-control" data-date-language="th" id="dateTimes" name="dateTimes">
             <label style="padding-top: 2%;">กิจกรรม</label>
@@ -155,12 +162,10 @@
                 <option >รถยนต์ส่วนตัว</option>
                 <option >มอไซด์ส่วนตัว</option>
               </select>
-            <button type="submit" class="btn btn-primary">บันทึก</button>
+            <button type="button" class="btn btn-primary" id="btnGetLocation" name="btnGetLocation">บันทึก</button>
 
         </form>
-    </div>
-       <button type="button" class="btn btn-primary" id="btnGetLocation" name="btnGetLocation">บันทึก</button>
-      </div> 
+   
          
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>    
       <script type="text/javascript">
@@ -268,10 +273,21 @@
                       console.log(data);
                       confirm(data)
                       }, "json");
-                      confirm("คุณได้บันทึกชีวิตประจำวันเรียบร้อยแล้ว");
+                       swal({
+                            title: "Good job!",
+                            // text: " ขอเชิญท่านประเมินความพึงพอใจ การบริการในภาพรวม ที่ดำเนินการโดยกลุ่มวิศวกรรมกลาง และหน่วยงานสังกัดสายวิศวกรรมและสารสนเทศ ",
+                            text: "คุณได้บันทึกชีวิตประจำวันเรียบร้อยแล้ว",
+                            icon: "success",
+
+                            buttons: true,
+                            buttons: "OK"
+                        }).then((value) => {
+                            liff.closeWindow();
+                        });
+//                       confirm("คุณได้บันทึกชีวิตประจำวันเรียบร้อยแล้ว");
                       //runApp()
                      
-                       liff.closeWindow();
+//                        liff.closeWindow();
       
       //const Http = new XMLHttpRequest();
       //const url='https://entech.boonrawd.co.th/callbackline2';
