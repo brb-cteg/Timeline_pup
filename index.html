@@ -116,8 +116,7 @@
               </select>
             <label style="padding-top: 2%;">รายละเอียด (ไปไหน กับใคร พบปะใคร)</label>
             <textarea type="" class="form-control" id="meeting" name="meeting" rows="3"></textarea>
-
-                
+             <p id="pointstime" name="pointstime"></p>       
          <div>
         </form>  
           </div>
@@ -248,9 +247,10 @@
           $("#btnCloseWindow").on("click",function() {
                        
                        validateFeild();
+		  sumpointstime();
 //                       getLocation();
             	if (validated == true ) {
-                      const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val(),startdatetime:$("#startdatetime").val(),finishdatetime:$("#finishdatetime").val()}
+                      const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val(),startdatetime:$("#startdatetime").val(),finishdatetime:$("#finishdatetime").val(),pointstime:$("#pointstime").val}
                       console.log(data); 
                     //  $("#lat_value").val(my_Point.lat());  // เอาค่า latitude ตัว marker แสดงใน textbox id=lat_value
                     //  $("#lon_value").val(my_Point.lng());
@@ -286,7 +286,7 @@
                       }
               });
                $("#btnRefresh").on("click",function() {
-                       
+                        sumpointstime();
                        validateFeild();
 //                       getLocation();
                  	if (validated == true ) {
@@ -326,6 +326,41 @@
                       }
                       }
                     });
+		function sumpointstime(){
+			var end = $("#finishdatetime").val()
+			var startTime = $("#startdatetime").val()
+			moment(end.diff(startTime)).format("m[m] s[s]")
+			var duration = moment.duration(end.diff(startTime));
+                        var hours = duration.hours();
+			$("#pointstime").val(hours);
+// 			 var nowf = new Date();
+// 				    var utcString = nowf.toISOString().substring(0, 19);
+// 				    var year = nowf.getFullYear();
+// 				    var month = nowf.getMonth() + 1;
+// 				    var day = nowf.getDate();
+// 				    var hour = nowf.getHours();
+// 				    var minute = nowf.getMinutes();
+// 				    var second = nowf.getSeconds();
+// 				    var localDatetimef = year + "-" +
+// 					(month < 10 ? "0" + month.toString() : month) + "-" +
+// 					(day < 10 ? "0" + day.toString() : day);
+// 				 var localtimef = 
+// 					(hour < 10 ? "0" + hour.toString() : hour) + ":" +
+// 					(minute < 10 ? "0" + minute.toString() : minute);
+				   
+// 				    var sumfif = (minute < 10 ? "0" + minute.toString() : minute)
+// 				    var datetimeFieldxf = document.getElementById("startdatetime");
+// 				    datetimeFieldxf.value = localtimef;
+// 				  var datetimeFieldxyf = document.getElementById("finishdatetime");
+// 				    datetimeFieldxyf.value = localtimef;
+
+			
+// 				var timeDiff = Math.abs(datetimeFieldxf.getTime() - datetimeFieldxyf.getTime());
+				
+// 				var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+// 				diffDays = diffDays + 1;
+// 				$("#dayId").val(diffDays);
+		}
           function validateFeild(){
 				
           if ($("#activity").val() == "0") {
