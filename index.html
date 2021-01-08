@@ -87,9 +87,9 @@
             <label for="exampleInputEmail1" style="padding-top: 2%;">วันที่ทำกิจกรรม</label>
             <input type="date" class="form-control" data-date-language="th" id="dateTimes" name="dateTimes">        
                 <label style="padding-top: 2%;">เริ่ม(เวลา):</label>
-                <input class="form-control" type="time" id="startDate" name="startDate" value="" >
+                <input class="form-control" type="time" id="startdatetime" name="startdatetime" value="" >
                  <label style="padding-top: 2%;">สิ้นสุด(เวลา):</label>
-                <input class="form-control" type="time" id="endDate" name="endDate" value="" >
+                <input class="form-control" type="time" id="finishdatetime" name="finishdatetime" value="" >
           <label style="padding-top: 2%;">กิจกรรม</label>
             <select name="cars" class="custom-select mb-3" style="margin-bottom: 0rem!important;" id="activity" name="activity">
                 <option selected value="0">เลือกกิจกรรม</option>
@@ -216,9 +216,9 @@
             var datetimeField = document.getElementById("dateTimes");
             datetimeField.value = localDatetime;
             var sumfi = (minute < 10 ? "0" + minute.toString() : minute)
-            var datetimeFieldx = document.getElementById("startDate");
+            var datetimeFieldx = document.getElementById("startdatetime");
             datetimeFieldx.value = localtime;
-          var datetimeFieldxy = document.getElementById("endDate");
+          var datetimeFieldxy = document.getElementById("finishdatetime");
             datetimeFieldxy.value = localtime;
 
             localStorage.setItem("minuteD", datetimeFieldx.value)
@@ -250,7 +250,7 @@
                        validateFeild();
 //                       getLocation();
             	if (validated == true ) {
-                      const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val(),startDate:$("#startDate").val(),endDate:$("#endDate").val()}
+                      const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val(),startdatetime:$("#startdatetime").val(),finishdatetime:$("#finishdatetime").val()}
                       console.log(data); 
                     //  $("#lat_value").val(my_Point.lat());  // เอาค่า latitude ตัว marker แสดงใน textbox id=lat_value
                     //  $("#lon_value").val(my_Point.lng());
@@ -290,7 +290,7 @@
                        validateFeild();
 //                       getLocation();
                  	if (validated == true ) {
-                      const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val(),startDate:$("#startDate").val(),endDate:$("#endDate").val()}
+                      const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val(),startdatetime:$("#startdatetime").val(),finishdatetime:$("#finishdatetime").val()}
                       console.log(data); 
                     //  $("#lat_value").val(my_Point.lat());  // เอาค่า latitude ตัว marker แสดงใน textbox id=lat_value
                     //  $("#lon_value").val(my_Point.lng());
