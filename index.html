@@ -327,8 +327,8 @@
                       }
                     });
 		function sumpointstime(){
-			var end = moment($("#finishdatetime").val());
-			var startTime = moment($("#startdatetime").val());
+			var end = moment($("#dateTimes").val() + "T" + $("#finishdatetime").val());
+			var startTime = moment($("#dateTimes").val() + "T" + $("#startdatetime").val());
 // 			moment(end.diff(startTime)).format("h[h] m[m]")
 			var duration = moment.duration(end.diff(startTime))
                         var Minutes = duration.asMinutes();
