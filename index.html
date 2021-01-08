@@ -327,12 +327,13 @@
                       }
                     });
 		function sumpointstime(){
-			var end = $("#finishdatetime").val()
-			var startTime = $("#startdatetime").val()
+			var end = moment($("#finishdatetime").val());
+			var startTime = moment($("#startdatetime").val());
 // 			moment(end.diff(startTime)).format("h[h] m[m]")
-			var duration = moment(end.diff(startTime)).format("m[m] s[s]")
-                        var hours = duration.hours();
-			$("#pointstime").val(hours);
+			var duration = moment.duration(end.diff(startTime))
+                        var Minutes = duration.asMinutes();
+			
+			$("#pointstime").val(Minutes);
 // 			 var nowf = new Date();
 // 				    var utcString = nowf.toISOString().substring(0, 19);
 // 				    var year = nowf.getFullYear();
