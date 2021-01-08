@@ -329,8 +329,8 @@
 		function sumpointstime(){
 			var end = $("#finishdatetime").val()
 			var startTime = $("#startdatetime").val()
-			moment(end.diff(startTime)).format("h[h] m[m]")
-			var duration = moment.duration(end.diff(startTime));
+// 			moment(end.diff(startTime)).format("h[h] m[m]")
+			var duration = moment(end.diff(startTime)).format("m[m] s[s]")
                         var hours = duration.hours();
 			$("#pointstime").val(hours);
 // 			 var nowf = new Date();
