@@ -92,8 +92,8 @@
                 <input class="form-control" type="time" id="finishdatetime" name="finishdatetime" value="" >
           <label style="padding-top: 2%;">กิจกรรม</label>
             <select name="cars" class="custom-select mb-3" style="margin-bottom: 0rem!important;" id="activity" name="activity">
-                <option selected value="0">เลือกกิจกรรม</option>
-                <option value="1">อยู่บ้าน</option>
+                <option  value="0">เลือกกิจกรรม</option>
+                <option selected value="1">อยู่บ้าน</option>
                 <option value="2">อยู่Office</option>
                 <option value="3">ซื้ออาหาร</option>
                 <option value="4">หาหมอ</option>
@@ -104,8 +104,8 @@
               </select>
           <label style="padding-top: 2%;">พาหนะ</label>
             <select name="cars" class="custom-select mb-3" style="margin-bottom: 0rem!important;" id="vehicle" name="vehicle">
-                <option selected value="0">เลือกพาหนะ</option>
-                <option value="8">ไม่ใช้รถ</option>
+                <option  value="0">เลือกพาหนะ</option>
+                <option selected value="8">ไม่ใช้รถ</option>
                 <option value="1">รถสาธารณะ</option>
                 <option value="2">MRT</option>
                 <option value="3">BTS</option>
@@ -115,7 +115,7 @@
                 <option value="7">มอเตอร์ไซค์ส่วนตัว</option>              
               </select>
             <label style="padding-top: 2%;">รายละเอียด (ไปไหน กับใคร พบปะใคร)</label>
-            <textarea type="" class="form-control" id="meeting" name="meeting" rows="3"></textarea>
+            <textarea type="" class="form-control" id="meeting" name="meeting" rows="3">-</textarea>
              <p id="pointstime" name="pointstime"></p>       
          <div>
         </form>  
@@ -249,7 +249,7 @@
 //                        validateFeild();
 		  sumpointstime();
 //                       getLocation();
-//             	if (validated == true ) {
+            	if (validated == true ) {
                       const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val(),startdatetime:$("#dateTimes").val() + "T" + $("#startdatetime").val(),finishdatetime:$("#dateTimes").val() + "T" + $("#finishdatetime").val(),pointstime:$("#pointstime").val()}
                       console.log(data); 
                     //  $("#lat_value").val(my_Point.lat());  // เอาค่า latitude ตัว marker แสดงใน textbox id=lat_value
@@ -268,28 +268,29 @@
                         }).then((value) => {
                             liff.closeWindow();
                         });
-//               	validated = false;
+              	validated = false;
 
-//                     } else  {
-//                       if ($("#meeting").val() == "") {
-//                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณากรอกรายละเอียด(ไปไหน กับใคร พบปะใคร)", "warning"); 
-//                       } else {
-//                       }
-//                       if ($("#activity").val() == "0") {
-//                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกกิจกรรม", "warning");  
-//                       } else {
-//                       }
-//                       if ($("#vehicle").val() == "0") {
-//                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกพาหนะ", "warning");  
-//                       } else {
-//                       }
-//                       }
+                    } else  {
+                     
+                      if ($("#activity").val() == "0") {
+                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกกิจกรรม", "warning");  
+                      } else {
+                      }
+                      if ($("#vehicle").val() == "0") {
+                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกพาหนะ", "warning");  
+                      } else {
+                      }
+			      if ($("#pointstime").val() == "0") {
+                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเวลาทำกิจกรรม", "warning");  
+                      } else {
+                      }
+                      }
               });
                $("#btnRefresh").on("click",function() {
                         sumpointstime();
 //                        validateFeild();
 //                       getLocation();
-//                  	if (validated == true ) {
+                 	if (validated == true ) {
                       const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val(),startdatetime:$("#dateTimes").val() + "T" + $("#startdatetime").val(),finishdatetime:$("#dateTimes").val() + "T" + $("#finishdatetime").val(),pointstime:$("#pointstime").val()}
                       console.log(data); 
                     //  $("#lat_value").val(my_Point.lat());  // เอาค่า latitude ตัว marker แสดงใน textbox id=lat_value
@@ -309,22 +310,23 @@
                              window.location.reload();
                         });
 
-//                       	validated = false;
+                      	validated = false;
 
-//                       } else  {
-//                        if ($("#meeting").val() == "") {
-//                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณากรอกรายละเอียด(ไปไหน กับใคร พบปะใคร)", "warning"); 
-//                       } else {
-//                       }
-//                       if ($("#activity").val() == "0") {
-//                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกกิจกรรม", "warning");  
-//                       } else {
-//                       }
-//                       if ($("#vehicle").val() == "0") {
-//                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกพาหนะ", "warning");  
-//                       } else {
-//                       }
-//                       }
+                      } else  {
+                      
+                      if ($("#activity").val() == "0") {
+                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกกิจกรรม", "warning");  
+                      } else {
+                      }
+                      if ($("#vehicle").val() == "0") {
+                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกพาหนะ", "warning");  
+                      } else {
+                      }
+			       if ($("#pointstime").val() == "0") {
+                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเวลาทำกิจกรรม", "warning");  
+                      } else {
+                      }
+                      }
                     });
 		function sumpointstime(){
 			var end = moment($("#dateTimes").val() + "T" + $("#finishdatetime").val());
@@ -370,20 +372,20 @@
 					} else {
 						validated = true;
 					}
-             if ($("#meeting").val() == "") {
-						validated =  false;
-            
-						return false;
-
-					} else {
-						validated = true;
-					}
+             
           if ($("#vehicle").val() == "0") {
 						validated =  false;  
 						return false;
 					} else {
 						validated = true;
 					} 
+           if ($("#pointstime").val() == "0") {
+						validated =  false;  
+						return false;
+					} else {
+						validated = true;
+					} 
+		  
           };
         });
       </script>
