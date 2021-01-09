@@ -281,7 +281,11 @@
                       } else {
                       }
 			      if ($("#pointstime").val() == "0") {
-                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเวลาทำกิจกรรม", "warning");  
+                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาตรวจสอบเวลาทำกิจกรรม", "warning");  
+                      } else {
+                      }
+			      if ($("#finishdatetime").val() >= $("#startdatetime").val()) {
+                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาตรวจสอบเวลาทำกิจกรรม", "warning");  
                       } else {
                       }
                       }
@@ -324,6 +328,10 @@
                       }
 			       if ($("#pointstime").val() == "0") {
                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเวลาทำกิจกรรม", "warning");  
+                      } else {
+                      }
+			       if ($("#finishdatetime").val() >= $("#startdatetime").val()) {
+                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาตรวจสอบเวลาทำกิจกรรม", "warning");  
                       } else {
                       }
                       }
@@ -385,6 +393,12 @@
 					} else {
 						validated = true;
 					} 
+	   if ($("#finishdatetime").val() >= $("#startdatetime").val()) {
+		 validated =  false;  
+		return false;
+	      } else {
+		      validated = true;
+	      }
 		  
           };
         });
