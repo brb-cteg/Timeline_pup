@@ -246,7 +246,7 @@
         
           $("#btnCloseWindow").on("click",function() {
                        
-//                        validateFeild();
+                       validateFeild();
 		  sumpointstime();
 //                       getLocation();
             	if (validated == true ) {
@@ -288,7 +288,7 @@
               });
                $("#btnRefresh").on("click",function() {
                         sumpointstime();
-//                        validateFeild();
+                       validateFeild();
 //                       getLocation();
                  	if (validated == true ) {
                       const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val(),startdatetime:$("#dateTimes").val() + "T" + $("#startdatetime").val(),finishdatetime:$("#dateTimes").val() + "T" + $("#finishdatetime").val(),pointstime:$("#pointstime").val()}
