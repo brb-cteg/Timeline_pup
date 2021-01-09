@@ -246,10 +246,10 @@
         
           $("#btnCloseWindow").on("click",function() {
                        
-                       validateFeild();
+//                        validateFeild();
 		  sumpointstime();
 //                       getLocation();
-            	if (validated == true ) {
+//             	if (validated == true ) {
                       const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val(),startdatetime:$("#dateTimes").val() + "T" + $("#startdatetime").val(),finishdatetime:$("#dateTimes").val() + "T" + $("#finishdatetime").val(),pointstime:$("#pointstime").val()}
                       console.log(data); 
                     //  $("#lat_value").val(my_Point.lat());  // เอาค่า latitude ตัว marker แสดงใน textbox id=lat_value
@@ -268,28 +268,28 @@
                         }).then((value) => {
                             liff.closeWindow();
                         });
-              	validated = false;
+//               	validated = false;
 
-                    } else  {
-                      if ($("#meeting").val() == "") {
-                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณากรอกรายละเอียด(ไปไหน กับใคร พบปะใคร)", "warning"); 
-                      } else {
-                      }
-                      if ($("#activity").val() == "0") {
-                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกกิจกรรม", "warning");  
-                      } else {
-                      }
-                      if ($("#vehicle").val() == "0") {
-                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกพาหนะ", "warning");  
-                      } else {
-                      }
-                      }
+//                     } else  {
+//                       if ($("#meeting").val() == "") {
+//                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณากรอกรายละเอียด(ไปไหน กับใคร พบปะใคร)", "warning"); 
+//                       } else {
+//                       }
+//                       if ($("#activity").val() == "0") {
+//                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกกิจกรรม", "warning");  
+//                       } else {
+//                       }
+//                       if ($("#vehicle").val() == "0") {
+//                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกพาหนะ", "warning");  
+//                       } else {
+//                       }
+//                       }
               });
                $("#btnRefresh").on("click",function() {
                         sumpointstime();
-                       validateFeild();
+//                        validateFeild();
 //                       getLocation();
-                 	if (validated == true ) {
+//                  	if (validated == true ) {
                       const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val(),startdatetime:$("#dateTimes").val() + "T" + $("#startdatetime").val(),finishdatetime:$("#dateTimes").val() + "T" + $("#finishdatetime").val(),pointstime:$("#pointstime").val()}
                       console.log(data); 
                     //  $("#lat_value").val(my_Point.lat());  // เอาค่า latitude ตัว marker แสดงใน textbox id=lat_value
@@ -309,22 +309,22 @@
                              window.location.reload();
                         });
 
-                      	validated = false;
+//                       	validated = false;
 
-                      } else  {
-                       if ($("#meeting").val() == "") {
-                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณากรอกรายละเอียด(ไปไหน กับใคร พบปะใคร)", "warning"); 
-                      } else {
-                      }
-                      if ($("#activity").val() == "0") {
-                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกกิจกรรม", "warning");  
-                      } else {
-                      }
-                      if ($("#vehicle").val() == "0") {
-                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกพาหนะ", "warning");  
-                      } else {
-                      }
-                      }
+//                       } else  {
+//                        if ($("#meeting").val() == "") {
+//                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณากรอกรายละเอียด(ไปไหน กับใคร พบปะใคร)", "warning"); 
+//                       } else {
+//                       }
+//                       if ($("#activity").val() == "0") {
+//                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกกิจกรรม", "warning");  
+//                       } else {
+//                       }
+//                       if ($("#vehicle").val() == "0") {
+//                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกพาหนะ", "warning");  
+//                       } else {
+//                       }
+//                       }
                     });
 		function sumpointstime(){
 			var end = moment($("#dateTimes").val() + "T" + $("#finishdatetime").val());
