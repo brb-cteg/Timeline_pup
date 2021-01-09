@@ -280,7 +280,7 @@
                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกพาหนะ", "warning");  
                       } else {
                       }
-			      if ($("#pointstime").val() == "0") {
+			      if ($("#pointstime").val() <= "0") {
                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาตรวจสอบเวลาทำกิจกรรม", "warning");  
                       } else {
                       }
@@ -326,7 +326,7 @@
                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกพาหนะ", "warning");  
                       } else {
                       }
-			       if ($("#pointstime").val() == "0") {
+			       if ($("#pointstime").val() <= "0") {
                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเวลาทำกิจกรรม", "warning");  
                       } else {
                       }
@@ -387,7 +387,7 @@
 					} else {
 						validated = true;
 					} 
-           if ($("#pointstime").val() == "0") {
+           if ($("#pointstime").val() <= "0") {
 						validated =  false;  
 						return false;
 					} else {
