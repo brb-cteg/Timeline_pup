@@ -393,7 +393,7 @@
 					} else {
 						validated = true;
 					} 
-	   if ($("#finishdatetime").val() >= $("#startdatetime").val()) {
+	   if ($("#finishdatetime").val() <= $("#startdatetime").val()) {
 		 validated =  false;  
 		return false;
 	      } else {
