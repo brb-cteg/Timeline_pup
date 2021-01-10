@@ -89,7 +89,7 @@
             <input type="date" class="form-control" data-date-language="th" id="dateTimes" name="dateTimes"> 
 <!-- 	        <button type="button" class="btn btn-primary" id="allday" name="allday">All Day</button> -->
 	        <label style="padding-top: 2%;">กิจกรรม</label>
-            <select name="cars" class="custom-select mb-3" style="margin-bottom: 0rem!important;" id="activity" name="activity">
+            <select name="cars" class="custom-select mb-3" style="margin-bottom: 0rem!important;" id="activity" name="activity" onchange="myFunction()">
                   <option selected value="1">อยู่บ้าน</option>
                 <option value="2">อยู่Office</option>
                 <option value="3">ซื้ออาหาร</option>
@@ -271,7 +271,11 @@
               $('#location').html(location);
 
         }
-      
+	      function myFunction() {
+		      alert("The text has been changed.");
+	  var x = document.getElementById("mySelect").value;
+	  document.getElementById("demo").innerHTML = "You selected: " + x;
+	}
         $(document).ready(function() {
                 
           var lat;
