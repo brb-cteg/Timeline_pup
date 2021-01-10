@@ -272,9 +272,32 @@
 
         }
 	      function myFunction() {
+		
 		      alert("The text has been changed.");
-	  var x = document.getElementById("mySelect").value;
-	  document.getElementById("demo").innerHTML = "You selected: " + x;
+				  window.addEventListener("load", function() {
+						    var now = new Date();
+						    var utcString = now.toISOString().substring(0, 19);
+						    var year = now.getFullYear();
+						    var month = now.getMonth() + 1;
+						    var day = now.getDate();
+						    var hour = now.getHours();
+						    var minute = now.getMinutes();
+						    var second = now.getSeconds();
+						    var localDatetime = year + "-" +
+							(month < 10 ? "0" + month.toString() : month) + "-" +
+							(day < 10 ? "0" + day.toString() : day);
+						 var localtime = 
+							(hour < 10 ? "0" + hour.toString() : hour) + ":" +
+							(minute < 10 ? "0" + minute.toString() : minute);
+// 						    var datetimeField = document.getElementById("dateTimes");
+// 						    datetimeField.value = localDatetime;
+						    var sumfi = (minute < 10 ? "0" + minute.toString() : minute)
+						    var datetimeFieldx = document.getElementById("startdatetime");
+						    datetimeFieldx.value = localtime;
+						  var datetimeFieldxy = document.getElementById("finishdatetime");
+						    datetimeFieldxy.value = localtime;
+
+					      })
 	}
         $(document).ready(function() {
                 
@@ -374,34 +397,7 @@
                       }
                     });
 		
-		$(".activity").change(function() {
-			alert("The text has been changed.");
-				  window.addEventListener("load", function() {
-						    var now = new Date();
-						    var utcString = now.toISOString().substring(0, 19);
-						    var year = now.getFullYear();
-						    var month = now.getMonth() + 1;
-						    var day = now.getDate();
-						    var hour = now.getHours();
-						    var minute = now.getMinutes();
-						    var second = now.getSeconds();
-						    var localDatetime = year + "-" +
-							(month < 10 ? "0" + month.toString() : month) + "-" +
-							(day < 10 ? "0" + day.toString() : day);
-						 var localtime = 
-							(hour < 10 ? "0" + hour.toString() : hour) + ":" +
-							(minute < 10 ? "0" + minute.toString() : minute);
-// 						    var datetimeField = document.getElementById("dateTimes");
-// 						    datetimeField.value = localDatetime;
-						    var sumfi = (minute < 10 ? "0" + minute.toString() : minute)
-						    var datetimeFieldx = document.getElementById("startdatetime");
-						    datetimeFieldx.value = localtime;
-						  var datetimeFieldxy = document.getElementById("finishdatetime");
-						    datetimeFieldxy.value = localtime;
-
-					      })
-
-				});
+		
 		function sumpointstime(){
 			var end = moment($("#dateTimes").val() + "T" + $("#finishdatetime").val());
 			var startTime = moment($("#dateTimes").val() + "T" + $("#startdatetime").val());
