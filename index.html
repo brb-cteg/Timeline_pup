@@ -11,6 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<!-- 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
     
 <!--     <script src="https://code.jquery.com/jquery-latest.min.js"></script> -->
@@ -368,7 +369,9 @@
                       }
                       }
                     });
+		
 		$(".activity").change(function() {
+			alert("The text has been changed.");
 				  window.addEventListener("load", function() {
 						    var now = new Date();
 						    var utcString = now.toISOString().substring(0, 19);
