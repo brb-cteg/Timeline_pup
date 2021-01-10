@@ -204,8 +204,8 @@
       
       
       <script type="text/javascript">
-	      setTime();
-	       function setTime() {
+	     
+	    
 	      if ($("#activity").val() == "1"){
 		   window.addEventListener("load", function() {
 		    var now = new Date();
@@ -259,7 +259,7 @@
                 // var minuteD =  localStorage.getItem("minuteD")
 	      })
 	      };
-	      }
+	 
        
         function getLocation() {
           if (navigator.geolocation) {
@@ -277,7 +277,31 @@
 
         }
 	      function myFunction() {	
-			 setTime();	
+			 window.addEventListener("load", function() {
+		    var now = new Date();
+		    var utcString = now.toISOString().substring(0, 19);
+		    var year = now.getFullYear();
+		    var month = now.getMonth() + 1;
+		    var day = now.getDate();
+		    var hour = now.getHours();
+		    var minute = now.getMinutes();
+		    var second = now.getSeconds();
+		    var localDatetime = year + "-" +
+			(month < 10 ? "0" + month.toString() : month) + "-" +
+			(day < 10 ? "0" + day.toString() : day);
+		 var localtime = 
+			(hour < 10 ? "0" + hour.toString() : hour) + ":" +
+			(minute < 10 ? "0" + minute.toString() : minute);
+		   
+		    var sumfi = (minute < 10 ? "0" + minute.toString() : minute)
+		    var datetimeFieldx = document.getElementById("startdatetime");
+		    datetimeFieldx.value = localtime;
+	            document.getElementById("startdatetime").innerHTML =  datetimeFieldx;
+		  var datetimeFieldxy = document.getElementById("finishdatetime");
+		    datetimeFieldxy.value = localtime;
+                     document.getElementById("finishdatetime").innerHTML =  datetimeFieldxy;
+		 
+	      })
 	}
 	     function myfamity(){
 		  var x = document.getElementById("famity").value;
