@@ -86,12 +86,8 @@
        <input style="display: none;" name="userId2" id="userId2" value="">        
             <label for="exampleInputEmail1" style="padding-top: 2%;">วันที่ทำกิจกรรม</label>
             <input type="date" class="form-control" data-date-language="th" id="dateTimes" name="dateTimes"> 
-	        <button type="button" class="btn btn-primary" id="allday" name="allday">All Day</button>
-                <label style="padding-top: 2%;">เริ่ม(เวลา):</label>
-                <input class="form-control" type="time" id="startdatetime" name="startdatetime" value="" >
-                 <label style="padding-top: 2%;">สิ้นสุด(เวลา):</label>
-                <input class="form-control" type="time" id="finishdatetime" name="finishdatetime" value="" >
-          <label style="padding-top: 2%;">กิจกรรม</label>
+<!-- 	        <button type="button" class="btn btn-primary" id="allday" name="allday">All Day</button> -->
+	        <label style="padding-top: 2%;">กิจกรรม</label>
             <select name="cars" class="custom-select mb-3" style="margin-bottom: 0rem!important;" id="activity" name="activity">
                   <option selected value="1">อยู่บ้าน</option>
                 <option value="2">อยู่Office</option>
@@ -103,6 +99,11 @@
                 <option value="7">ติดต่อราชการ</option>  
 		     <option value="8">อื่นๆ</option>  
               </select>
+                <label style="padding-top: 2%;">เริ่ม(เวลา):</label>
+                <input class="form-control" type="time" id="startdatetime" name="startdatetime" value="" >
+                 <label style="padding-top: 2%;">สิ้นสุด(เวลา):</label>
+                <input class="form-control" type="time" id="finishdatetime" name="finishdatetime" value="" >
+         
           <label style="padding-top: 2%;">พาหนะ</label>
             <select name="cars" class="custom-select mb-3" style="margin-bottom: 0rem!important;" id="vehicle" name="vehicle">
               
@@ -199,31 +200,41 @@
       
       
       <script type="text/javascript">
-      window.addEventListener("load", function() {
-            var now = new Date();
-            var utcString = now.toISOString().substring(0, 19);
-            var year = now.getFullYear();
-            var month = now.getMonth() + 1;
-            var day = now.getDate();
-            var hour = now.getHours();
-            var minute = now.getMinutes();
-            var second = now.getSeconds();
-            var localDatetime = year + "-" +
-                (month < 10 ? "0" + month.toString() : month) + "-" +
-                (day < 10 ? "0" + day.toString() : day);
-         var localtime = 
-                (hour < 10 ? "0" + hour.toString() : hour) + ":" +
-                (minute < 10 ? "0" + minute.toString() : minute);
-            var datetimeField = document.getElementById("dateTimes");
-            datetimeField.value = localDatetime;
-            var sumfi = (minute < 10 ? "0" + minute.toString() : minute)
-            var datetimeFieldx = document.getElementById("startdatetime");
-            datetimeFieldx.value = localtime;
-          var datetimeFieldxy = document.getElementById("finishdatetime");
-            datetimeFieldxy.value = localtime;
+	      if ($("#activity").val() == "1"){
+		   
+		   var timeStr = "8:00";
+		       timeStr.value = document.getElementById("startdatetime");
+		    var timeStrx = "16:00";
+		       timeStrx.value = document.getElementById("finishdatetime");
 
-            localStorage.setItem("minuteD", datetimeFieldx.value)
+	      }else{
+		   window.addEventListener("load", function() {
+		    var now = new Date();
+		    var utcString = now.toISOString().substring(0, 19);
+		    var year = now.getFullYear();
+		    var month = now.getMonth() + 1;
+		    var day = now.getDate();
+		    var hour = now.getHours();
+		    var minute = now.getMinutes();
+		    var second = now.getSeconds();
+		    var localDatetime = year + "-" +
+			(month < 10 ? "0" + month.toString() : month) + "-" +
+			(day < 10 ? "0" + day.toString() : day);
+		 var localtime = 
+			(hour < 10 ? "0" + hour.toString() : hour) + ":" +
+			(minute < 10 ? "0" + minute.toString() : minute);
+		    var datetimeField = document.getElementById("dateTimes");
+		    datetimeField.value = localDatetime;
+		    var sumfi = (minute < 10 ? "0" + minute.toString() : minute)
+		    var datetimeFieldx = document.getElementById("startdatetime");
+		    datetimeFieldx.value = localtime;
+		  var datetimeFieldxy = document.getElementById("finishdatetime");
+		    datetimeFieldxy.value = localtime;
+
+		    localStorage.setItem("minuteD", datetimeFieldx.value)
                 // var minuteD =  localStorage.getItem("minuteD")
+	      }
+     
         });
         function getLocation() {
           if (navigator.geolocation) {
