@@ -129,8 +129,8 @@
           </div>
           <center>
                     <div style="padding-top: 2%;">
-                        <button type="button" class="btn btn-primary" id="btnRefresh" name="btnRefresh" onclick="btnRefresh()">บันทึก</button>
-                        <button type="button" class="btn btn-primary" id="btnCloseWindow" name="btnCloseWindow" onclick="btnCloseWindow()">บันทึก และปิด</button>
+                        <button type="button" class="btn btn-primary" id="btnRefresh" name="btnRefresh" >บันทึก</button>
+                        <button type="button" class="btn btn-primary" id="btnCloseWindow" name="btnCloseWindow" >บันทึก และปิด</button>
                     </div>
                 </center>
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>    
@@ -332,8 +332,14 @@
                   document.getElementById("meeting").innerHTML =  x;
 		  
 	     }
-	       
-         function btnCloseWindow() {
+	 
+        $(document).ready(function() {
+                
+          var lat;
+          var long;
+       
+		  $("#btnCloseWindow").on("click", function() {  
+       
                        
                        validateFeild();
 		  sumpointstime();
@@ -378,8 +384,9 @@
                       } else {
                       }
                       }
-              };
-               function btnRefresh() {
+              });
+	      $("#btnRefresh").on("click", function() { 
+             
                         sumpointstime();
                        validateFeild();
 //                       getLocation();
@@ -424,13 +431,7 @@
                       } else {
                       }
                       }
-                    };
-		
-        $(document).ready(function() {
-                
-          var lat;
-          var long;
-       
+                    });
 		
 		function sumpointstime(){
 			var end = moment($("#dateTimes").val() + "T" + $("#finishdatetime").val());
