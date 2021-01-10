@@ -338,11 +338,10 @@
           var lat;
           var long;
        
-		  $("#btnCloseWindow").on("click", function() {  
-       
-                       
-                       validateFeild();
+		  $("#btnCloseWindow").on("click", function() {                       
+                      
 		  sumpointstime();
+			   validateFeild();
 //                       getLocation();
             	if (validated == true ) {
                       const data={userID:$("#userId2").text(),lat: $("#lat_value").val(),long:$("#lon_value").val(),dateTimes:$("#dateTimes").val(),activity:$("#activity").val(),meeting:$("#meeting").val(),vehicle:$("#vehicle").val(),startdatetime:$("#dateTimes").val() + "T" + $("#startdatetime").val(),finishdatetime:$("#dateTimes").val() + "T" + $("#finishdatetime").val(),pointstime:$("#pointstime").val()}
