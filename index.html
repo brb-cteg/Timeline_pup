@@ -201,11 +201,29 @@
       
       <script type="text/javascript">
 	      if ($("#activity").val() == "1"){
-		   
-		   var timeStr = "8:00";
-		       timeStr.value = document.getElementById("startdatetime");
-		    var timeStrx = "16:00";
-		       timeStrx.value = document.getElementById("finishdatetime");
+		   window.addEventListener("load", function() {
+		    var now = new Date();
+		    var utcString = now.toISOString().substring(0, 19);
+		    var year = now.getFullYear();
+		    var month = now.getMonth() + 1;
+		    var day = now.getDate();
+		    var hour = now.getHours();
+		    var minute = now.getMinutes();
+		    var second = now.getSeconds();
+		    var localDatetime = year + "-" +
+			(month < 10 ? "0" + month.toString() : month) + "-" +
+			(day < 10 ? "0" + day.toString() : day);
+		 var localtime = 
+			(hour < 10 ? "0" + hour.toString() : hour) + ":" +
+			(minute < 10 ? "0" + minute.toString() : minute);
+		    var datetimeField = document.getElementById("dateTimes");
+		    datetimeField.value = localDatetime;
+		    var sumfi = (minute < 10 ? "0" + minute.toString() : minute)
+		    var datetimeFieldx = document.getElementById("startdatetime");
+		    datetimeFieldx.value = "8:00";
+		  var datetimeFieldxy = document.getElementById("finishdatetime");
+		    datetimeFieldxy.value = "16:00";
+
 
 	      }else{
 		   window.addEventListener("load", function() {
