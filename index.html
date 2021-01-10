@@ -85,17 +85,18 @@
        <input style="display: none;" name="lon_value" id="lon_value" value="">
        <input style="display: none;" name="userId2" id="userId2" value="">        
             <label for="exampleInputEmail1" style="padding-top: 2%;">วันที่ทำกิจกรรม</label>
-            <input type="date" class="form-control" data-date-language="th" id="dateTimes" name="dateTimes">        
+            <input type="date" class="form-control" data-date-language="th" id="dateTimes" name="dateTimes"> 
+	        <button type="button" class="btn btn-primary" id="allday" name="allday">All Day</button>
                 <label style="padding-top: 2%;">เริ่ม(เวลา):</label>
                 <input class="form-control" type="time" id="startdatetime" name="startdatetime" value="" >
                  <label style="padding-top: 2%;">สิ้นสุด(เวลา):</label>
                 <input class="form-control" type="time" id="finishdatetime" name="finishdatetime" value="" >
           <label style="padding-top: 2%;">กิจกรรม</label>
             <select name="cars" class="custom-select mb-3" style="margin-bottom: 0rem!important;" id="activity" name="activity">
-                <option  value="0">เลือกกิจกรรม</option>
-                <option selected value="1">อยู่บ้าน</option>
+                  <option selected value="1">อยู่บ้าน</option>
                 <option value="2">อยู่Office</option>
                 <option value="3">ซื้ออาหาร</option>
+		     <option value="9">ซื้อของ</option>
                 <option value="4">หาหมอ</option>
                 <option value="5">นั่งร้าน</option> 
 		  <option value="6">ส่งของ</option>
@@ -104,14 +105,15 @@
               </select>
           <label style="padding-top: 2%;">พาหนะ</label>
             <select name="cars" class="custom-select mb-3" style="margin-bottom: 0rem!important;" id="vehicle" name="vehicle">
-                <option  value="0">เลือกพาหนะ</option>
+              
                 <option selected value="8">ไม่ใช้รถ</option>
+		<option value="6">รถยนต์ส่วนตัว</option>
                 <option value="1">รถสาธารณะ</option>
                 <option value="2">MRT</option>
                 <option value="3">BTS</option>
                 <option value="4">วินมอเตอร์ไซค์</option>
                 <option value="5">แท็กซี่</option>
-                <option value="6">รถยนต์ส่วนตัว</option>
+              
                 <option value="7">มอเตอร์ไซค์ส่วนตัว</option>              
               </select>
             <label style="padding-top: 2%;">รายละเอียด (ไปไหน กับใคร พบปะใคร)</label>
