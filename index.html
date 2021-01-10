@@ -332,11 +332,7 @@
                   document.getElementById("meeting").innerHTML =  x;
 		  
 	     }
-        $(document).ready(function() {
-                
-          var lat;
-          var long;
-        
+	       
          function btnCloseWindow() {
                        
                        validateFeild();
@@ -430,6 +426,11 @@
                       }
                     };
 		
+        $(document).ready(function() {
+                
+          var lat;
+          var long;
+       
 		
 		function sumpointstime(){
 			var end = moment($("#dateTimes").val() + "T" + $("#finishdatetime").val());
