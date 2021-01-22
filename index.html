@@ -120,8 +120,9 @@
               </select>
             <label style="padding-top: 2%;">รายละเอียด (ไปไหน กับใคร พบปะใคร)</label>
 	       <button type="button" class="btn btn-primary" id="famity" name="famity" onclick="myfamity()" value="ครอบครัว" >ครอบครัว</button>
+	        <button type="button" class="btn btn-primary" id="wfh" name="wfh" onclick="mywfh()" value="WFH" >WFH</button>
 	   <div style="padding-top: 2%;">
-            <textarea type="" class="form-control" id="meeting" name="meeting" rows="3">-</textarea>
+            <textarea type="" class="form-control" id="meeting" name="meeting" rows="3"></textarea>
 	   </div>   
              <p id="pointstime" name="pointstime"></p>       
          <div>
@@ -332,7 +333,11 @@
                   document.getElementById("meeting").innerHTML =  x;
 		  
 	     }
-	 
+	  function mywfh(){
+		  var y = document.getElementById("wfh").value;
+                  document.getElementById("meeting").innerHTML =  y;
+		  
+	     }
         $(document).ready(function() {
                 
           var lat;
@@ -382,6 +387,10 @@
                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาตรวจสอบเวลาทำกิจกรรม", "warning");  
                       } else {
                       }
+			      if ($("#meeting").val() == "" {
+                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาตรวจสอบรายละเอียด(ไปไหน กับใคร พบปะใคร)", "warning");  
+                      } else {
+                      }
                       }
               });
 	      $("#btnRefresh").on("click", function() { 
@@ -421,12 +430,16 @@
                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเลือกพาหนะ", "warning");  
                       } else {
                       }
-			       if ($("#pointstime").val() <= "0") {
+		      if ($("#pointstime").val() <= "0") {
                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาเวลาทำกิจกรรม", "warning");  
                       } else {
                       }
-			       if ($("#finishdatetime").val() <= $("#startdatetime").val()) {
+		      if ($("#finishdatetime").val() <= $("#startdatetime").val()) {
                         swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาตรวจสอบเวลาทำกิจกรรม", "warning");  
+                      } else {
+                      }
+			      if ($("#meeting").val() == "" {
+                        swal("บันทึกข้อมูลไม่สำเร็จ!", "กรุณาตรวจสอบรายละเอียด(ไปไหน กับใคร พบปะใคร)", "warning");  
                       } else {
                       }
                       }
@@ -490,6 +503,12 @@
 						validated = true;
 					} 
 	   if ($("#finishdatetime").val() <= $("#startdatetime").val()) {
+		 validated =  false;  
+		return false;
+	      } else {
+		      validated = true;
+	      }
+	    if ($("#meeting").val() == "") {
 		 validated =  false;  
 		return false;
 	      } else {
