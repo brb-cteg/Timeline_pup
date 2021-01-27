@@ -305,11 +305,13 @@
 		    datetimeFieldxy.value = "16:00";  
 				
 			  }else{
-				  var number = 8
+				  
+				  $( "select option:selected" ).each(function() {
+     				 var number = 6
 				   var numberxy = document.getElementById("vehicle");
 				  numberxy.value = number
 				  document.getElementById("vehicle").innerHTML =  numberxy;
-				 
+    				});
 				
 		    var now = new Date();
 		    var utcString = now.toISOString().substring(0, 19);
