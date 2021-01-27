@@ -108,7 +108,7 @@
           <label style="padding-top: 2%;">พาหนะ</label>
             <select name="cars" class="custom-select mb-3" style="margin-bottom: 0rem!important;" id="vehicle" name="vehicle">
               
-                <option selected value="8">ไม่ใช้รถ</option>
+                <option  value="8">ไม่ใช้รถ</option>
 		<option value="6">รถยนต์ส่วนตัว</option>
 		<option value="7">มอเตอร์ไซค์ส่วนตัว</option>         
                 <option value="1">รถสาธารณะ</option>
@@ -231,7 +231,12 @@
 		    datetimeFieldx.value = "08:00";
 		  var datetimeFieldxy = document.getElementById("finishdatetime");
 		    datetimeFieldxy.value = "16:00";
+			   $("#vehicle option[value=8]").attr('selected', 'selected');
+ 
+				// Or just...
+				$("#vehicle").val(8);
 		   })
+		      
 
 	      }else{
 		   window.addEventListener("load", function() {
@@ -259,6 +264,10 @@
 
 		    localStorage.setItem("minuteD", datetimeFieldx.value)
                 // var minuteD =  localStorage.getItem("minuteD")
+			   $("#vehicle option[value=6]").attr('selected', 'selected');
+ 
+				// Or just...
+				$("#vehicle").val(6);
 	      })
 		      
 	      };
@@ -303,16 +312,23 @@
 		    datetimeFieldx.value = "08:00";
 		  var datetimeFieldxy = document.getElementById("finishdatetime");
 		    datetimeFieldxy.value = "16:00";  
+				  $("#vehicle option[value=8]").attr('selected', 'selected');
+ 
+				// Or just...
+				$("#vehicle").val(8);
 				
 			  }else{
 				  
-				  $( "select option:selected" ).each(function() {
-     				 var number = 6
-				   var numberxy = document.getElementById("vehicle");
-				  numberxy.value = number
-				  document.getElementById("vehicle").innerHTML =  numberxy;
-    				});
-				
+// 				  $( "select option:selected" ).each(function() {
+//      				 var number = 6
+// 				   var numberxy = document.getElementById("vehicle");
+// 				  numberxy.value = number
+// 				  document.getElementById("vehicle").innerHTML =  numberxy;
+//     				});
+				$("#vehicle option[value=6]").attr('selected', 'selected');
+ 
+				// Or just...
+				$("#vehicle").val(6);
 		    var now = new Date();
 		    var utcString = now.toISOString().substring(0, 19);
 		    var year = now.getFullYear();
