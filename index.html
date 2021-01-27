@@ -305,7 +305,11 @@
 		    datetimeFieldxy.value = "16:00";  
 				
 			  }else{
-				$("#vehicle").val() == "8" 
+				  $( ".vehicle" ).change(function() {
+					  $("#vehicle").val() == "8" 
+				  alert( "Handler for .change() called." );
+				});
+				
 		    var now = new Date();
 		    var utcString = now.toISOString().substring(0, 19);
 		    var year = now.getFullYear();
