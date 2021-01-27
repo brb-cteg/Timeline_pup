@@ -260,6 +260,7 @@
 		    localStorage.setItem("minuteD", datetimeFieldx.value)
                 // var minuteD =  localStorage.getItem("minuteD")
 	      })
+		      
 	      };
 	 
        
@@ -304,6 +305,7 @@
 		    datetimeFieldxy.value = "16:00";  
 				
 			  }else{
+				$("#vehicle").val() == "8" 
 		    var now = new Date();
 		    var utcString = now.toISOString().substring(0, 19);
 		    var year = now.getFullYear();
@@ -482,6 +484,7 @@
 // 				diffDays = diffDays + 1;
 // 				$("#dayId").val(diffDays);
 		}
+	       
           function validateFeild(){
 				
           if ($("#activity").val() == "0") {
