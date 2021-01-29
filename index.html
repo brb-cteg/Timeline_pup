@@ -267,10 +267,19 @@
 
 		    localStorage.setItem("minuteD", datetimeFieldx.value)
                 // var minuteD =  localStorage.getItem("minuteD")
-			   $("#vehicle option[value=6]").attr('selected', 'selected');
+			   if($("#activity").val() == "10"){
+			       $("#vehicle option[value=8]").attr('selected', 'selected');
+ 
+				// Or just...
+				$("#vehicle").val(8);
+			      
+			      }else{
+			       $("#vehicle option[value=6]").attr('selected', 'selected');
  
 				// Or just...
 				$("#vehicle").val(6);
+			      }
+			  
 	      })
 		      
 	      };
@@ -328,10 +337,18 @@
 // 				  numberxy.value = number
 // 				  document.getElementById("vehicle").innerHTML =  numberxy;
 //     				});
-				$("#vehicle option[value=6]").attr('selected', 'selected');
+				if($("#activity").val() == "10"){
+			       $("#vehicle option[value=8]").attr('selected', 'selected');
+ 
+				// Or just...
+				$("#vehicle").val(8);
+			      
+			      }else{
+			       $("#vehicle option[value=6]").attr('selected', 'selected');
  
 				// Or just...
 				$("#vehicle").val(6);
+			      }
 		    var now = new Date();
 		    var utcString = now.toISOString().substring(0, 19);
 		    var year = now.getFullYear();
