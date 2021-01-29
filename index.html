@@ -91,14 +91,16 @@
 	        <label style="padding-top: 2%;">กิจกรรม</label>
             <select name="cars" class="custom-select mb-3" style="margin-bottom: 0rem!important;" id="activity" name="activity" onchange="myFunction()">
                   <option selected value="1">อยู่บ้าน</option>
-                <option value="2">อยู่Office</option>
+                <option value="2">ทำงานที่บริษัท</option>
                 <option value="3">ซื้ออาหาร</option>
 		     <option value="9">ซื้อของ</option>
-                <option value="4">หาหมอ</option>
-                <option value="5">นั่งร้าน</option> 
+                <option value="4">ไปสถานพยาบาล</option>
+                <option value="5">นั่งร้านอาหาร</option> 
 		  <option value="6">ส่งของ</option>
-                <option value="7">ติดต่อราชการ</option>  
-		     <option value="8">อื่นๆ</option>  
+                <option value="7">ติดต่อราชการ</option>     
+		    <option value="10">ทำงานที่บ้าน</option>  
+		     <option value="11">ทำงานที่อื่นๆ</option> 
+		    <option value="8">อื่นๆ</option> 
               </select>
                 <label style="padding-top: 2%;">เริ่ม(เวลา):</label>
                 <input class="form-control" type="time" id="startdatetime" name="startdatetime" value="" >
@@ -228,9 +230,9 @@
 		    datetimeField.value = localDatetime;
 		    var sumfi = (minute < 10 ? "0" + minute.toString() : minute)
 		    var datetimeFieldx = document.getElementById("startdatetime");
-		    datetimeFieldx.value = "08:00";
+		    datetimeFieldx.value = "00:01";
 		  var datetimeFieldxy = document.getElementById("finishdatetime");
-		    datetimeFieldxy.value = "16:00";
+		    datetimeFieldxy.value = "23:59";
 			   $("#vehicle option[value=8]").attr('selected', 'selected');
  
 				// Or just...
@@ -258,9 +260,9 @@
 		    datetimeField.value = localDatetime;
 		    var sumfi = (minute < 10 ? "0" + minute.toString() : minute)
 		    var datetimeFieldx = document.getElementById("startdatetime");
-		    datetimeFieldx.value = localtime;
+		    datetimeFieldx.value = "08:00";
 		  var datetimeFieldxy = document.getElementById("finishdatetime");
-		    datetimeFieldxy.value = localtime;
+		    datetimeFieldxy.value = "16:00";
 
 		    localStorage.setItem("minuteD", datetimeFieldx.value)
                 // var minuteD =  localStorage.getItem("minuteD")
@@ -309,9 +311,9 @@
 		    datetimeField.value = localDatetime;
 		    var sumfi = (minute < 10 ? "0" + minute.toString() : minute)
 		    var datetimeFieldx = document.getElementById("startdatetime");
-		    datetimeFieldx.value = "08:00";
+		    datetimeFieldx.value = "00:01";
 		  var datetimeFieldxy = document.getElementById("finishdatetime");
-		    datetimeFieldxy.value = "16:00";  
+		    datetimeFieldxy.value = "23:59"; 
 				  $("#vehicle option[value=8]").attr('selected', 'selected');
  
 				// Or just...
@@ -346,10 +348,10 @@
 		   
 		    var sumfi = (minute < 10 ? "0" + minute.toString() : minute)
 		    var datetimeFieldx = document.getElementById("startdatetime");
-		    datetimeFieldx.value = localtime;
+		    datetimeFieldx.value = "08:00";
 	            document.getElementById("startdatetime").innerHTML =  datetimeFieldx;
 		  var datetimeFieldxy = document.getElementById("finishdatetime");
-		    datetimeFieldxy.value = localtime;
+		    datetimeFieldxy.value = "16:00";  
                      document.getElementById("finishdatetime").innerHTML =  datetimeFieldxy;
 			  }
 	    
